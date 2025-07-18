@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Google Login</title>
+    <script type="module" src="../../FirebaseService.js"></script>
+</head>
+<body>
+    <button id="loginBtn">Login with Google</button>
+    <pre id="tokenOutput"></pre>
+
+    <script type="module">
+        import { loginWithGoogle } from '../../FirebaseService.js';
+
+        document.getElementById('loginBtn').addEventListener('click', async () => {
+            try {
+                const token = await loginWithGoogle();
+                document.getElementById('tokenOutput').innerText = `ID Token: ${token}`;
+            } catch (error) {
+                document.getElementById('tokenOutput').innerText = `Error: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>

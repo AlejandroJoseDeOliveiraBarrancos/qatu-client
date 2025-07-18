@@ -1,0 +1,90 @@
+@import "./Main.css";
+
+.delete-catalog-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    margin: 5rem auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.delete-catalog-container h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--rich-black);
+    margin-bottom: 1rem;
+}
+
+.delete-catalog-container p {
+    font-size: 1rem;
+    color: var(--fern-green);
+    margin-bottom: 1.5rem;
+}
+
+.delete-catalog-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn-delete {
+    padding: 0.8rem 1.5rem;
+    background-color: #8B1313;
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-delete:hover {
+    background-color: #560c0c;
+}
+
+.btn-cancel {
+    padding: 0.8rem 1.5rem;
+    background-color: #696F67;
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-cancel:hover {
+    background-color: #2d2d2d;
+}
+
+@media (max-width: 768px) {
+    .delete-catalog-container {
+        padding: 1.5rem;
+        width: 95%;
+    }
+
+    .delete-catalog-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .delete-catalog-container p {
+        font-size: 0.9rem;
+    }
+
+    .btn-delete,
+    .btn-cancel {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+}

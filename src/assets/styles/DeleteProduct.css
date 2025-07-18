@@ -1,0 +1,90 @@
+@import "./Main.css";
+
+.delete-product-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    margin: 5rem auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.delete-product-container h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #1d3557;
+    margin-bottom: 1rem;
+}
+
+.delete-product-container p {
+    font-size: 1rem;
+    color: #457b9d;
+    margin-bottom: 1.5rem;
+}
+
+.delete-product-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn-delete {
+    padding: 0.8rem 1.5rem;
+    background-color: #8B1313;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-delete:hover {
+    background-color: #560c0c;
+}
+
+.btn-cancel {
+    padding: 0.8rem 1.5rem;
+    background-color: #696F67;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-cancel:hover {
+    background-color: #2d2d2d;
+}
+
+@media (max-width: 768px) {
+    .delete-product-container {
+        padding: 1.5rem;
+        width: 95%;
+    }
+
+    .delete-product-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .delete-product-container p {
+        font-size: 0.9rem;
+    }
+
+    .btn-delete,
+    .btn-cancel {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+}

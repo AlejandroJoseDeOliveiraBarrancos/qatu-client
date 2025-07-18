@@ -1,0 +1,22 @@
+.text-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.text-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.text-button:active {
+    background-color: #3e8e41;
+    transform: scale(0.98);
+}

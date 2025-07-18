@@ -1,0 +1,63 @@
+/* Define CSS variables to avoid hard-coded values */
+:root {
+    --carousel-width: 300px;
+    --carousel-border-width: 2px;
+    --carousel-border-color: #ccc;
+    --carousel-border-radius: 10px;
+    --carousel-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --carousel-padding: 10px;
+    --carousel-image-border-radius: 5px;
+    --carousel-button-bg-color: #007bff;
+    --carousel-button-hover-bg-color: #0056b3;
+    --carousel-button-color: white;
+    --carousel-button-padding: 10px;
+    --carousel-button-border-radius: 5px;
+    --carousel-button-transition: background-color 0.3s;
+    --carousel-button-position-left: 10px;
+    --carousel-button-position-right: 10px;
+}
+
+.carousel {
+    position: relative;
+    width: var(--carousel-width);
+    margin: auto;
+    overflow: hidden;
+    border: var(--carousel-border-width) solid var(--carousel-border-color);
+    border-radius: var(--carousel-border-radius);
+    box-shadow: var(--carousel-box-shadow);
+}
+
+.carousel-content {
+    text-align: center;
+    padding: var(--carousel-padding);
+}
+
+.carousel-image {
+    max-width: 100%;
+    border-radius: var(--carousel-image-border-radius);
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--carousel-button-bg-color);
+    color: var(--carousel-button-color);
+    border: none;
+    padding: var(--carousel-button-padding);
+    cursor: pointer;
+    border-radius: var(--carousel-button-border-radius);
+    transition: var(--carousel-button-transition);
+}
+
+.carousel-button:hover {
+    background-color: var(--carousel-button-hover-bg-color);
+}
+
+.carousel-button.prev {
+    left: var(--carousel-button-position-left);
+}
+
+.carousel-button.next {
+    right: var(--carousel-button-position-right);
+}

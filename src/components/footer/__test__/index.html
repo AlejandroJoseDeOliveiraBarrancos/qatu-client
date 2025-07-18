@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Footer Component MVVM</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="../Footer.css">
+</head>
+<body>
+    <!-- Main content of your page goes here -->
+    
+    <div id="mainContent">
+      <!-- Placeholder for page content -->
+      <p>Your main content goes here...</p>
+    </div>
+  
+    <!-- Footer container -->
+    <div id="footerContainer"></div>
+  
+    <script type="module">
+      import { createFooterModel } from '../FooterModel.js';
+      import { createFooterView } from '../FooterView.js';
+      import { createFooterViewModel } from '../FooterViewModel.js';
+  
+      const footerLinks = [
+        { title: 'Contactanos', links: [
+          { name: 'X', url: '#' },
+          { name: 'Instagram', url: '#' },
+          { name: 'YouTube', url: '#' },
+          { name: 'LinkedIn', url: '#' },
+        ]},
+        { title: 'Necesitas Ayuda?', links: [] },
+        { title: 'Quieres ser parte de QATU?', links: [] }
+      ];
+  
+      const footerModel = createFooterModel(footerLinks);
+      const footerContainer = document.getElementById('footerContainer');
+      const footerView = createFooterView(footerContainer);
+      const footerViewModel = createFooterViewModel(footerModel, footerView);
+  
+      footerViewModel.initialize();
+    </script>
+  </body>
+</html>

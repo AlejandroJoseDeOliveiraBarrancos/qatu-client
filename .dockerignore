@@ -1,0 +1,40 @@
+# Ignore version control files
+.git
+.gitignore
+
+# Node.js modules and cache
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Docker and local configuration files
+Dockerfile
+.dockerignore
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build and output files
+/dist
+
+# Editor/IDE configurations
+*.swp
+*.swo
+*.idea
+.vscode
+*.sublime-project
+*.sublime-workspace
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Other unnecessary files for the Docker image
+logs
+*.log
+coverage
+*.cache
+*.test.*
+*.spec.*

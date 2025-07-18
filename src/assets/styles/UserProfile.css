@@ -1,0 +1,134 @@
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-color: #011526;
+    padding: 5rem;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);
+    max-width: 500px;
+    margin: auto;
+    font-size: 1.2rem;
+}
+
+.user-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    border: 3px solid #417E2E;
+    object-fit: cover;
+}
+
+.user-name {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.user-email {
+    font-size: 1.2rem;
+    color: #a8dadc;
+    margin-bottom: 0.5rem;
+}
+
+.edit-profile-btn,
+.back-to-market-btn {
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-profile-btn {
+    background-color: #417E2E;
+    color: white;
+}
+
+.edit-profile-btn:hover {
+    background-color: #1f5b0d;
+}
+
+.back-to-market-btn {
+    margin-top: 1rem;
+    background-color: #646464;
+    color: white;
+}
+
+.back-to-market-btn:hover {
+    background-color: #474747;
+}
+
+#edit-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#edit-username,
+#edit-email {
+    flex: 1;
+    min-width: 47%;
+    padding: 0.8rem;
+    border-radius: 15px;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    background-color: #ffffff;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#edit-username:focus,
+#edit-email:focus {
+    border-color: #2f571f;
+}
+
+#save-profile-btn,
+#cancel-edit-btn {
+    flex: 1;
+    max-width: 25%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#save-profile-btn {
+    background-color: #417E2E;
+    color: white;
+}
+
+#save-profile-btn:hover {
+    background-color: #2f571f;
+}
+
+#cancel-edit-btn {
+    background-color: #8B1313;
+    color: white;
+}
+
+#cancel-edit-btn:hover {
+    background-color: #5a0c0c;
+}
+
+@media (max-width: 768px) {
+    #edit-form {
+        gap: 1rem;
+    }
+
+    #edit-username,
+    #edit-email,
+    #save-profile-btn,
+    #cancel-edit-btn {
+        flex: 1;
+    }
+}

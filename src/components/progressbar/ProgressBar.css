@@ -1,0 +1,59 @@
+:root {
+    --progress-bar-bg-color: #dcdada;
+    --progress-bar-active-bg-color: #4b3078; 
+    --progress-bar-complete-bg-color: #1b7237; 
+    --progress-bar-border-radius: 1rem;
+    --progress-bar-height: 1.25rem; 
+    --progress-bar-width: 100%;
+    --button-padding: 0.625rem 1rem;
+    --button-bg-color: #6f6f6f;
+    --button-hover-bg-color: #1e1330;
+    --button-active-bg-color: #3e3847;
+    --button-border-radius: 0.5rem;
+    --font-family: 'Roboto', sans-serif;
+    --transition-speed: 0.3s;
+    --button-font-size: 1rem;
+}
+
+.progress-bar-container {
+    width: var(--progress-bar-width);
+    background-color: var(--progress-bar-bg-color);
+    border-radius: var(--progress-bar-border-radius);
+    margin: 1rem 0;
+    position: relative;
+}
+
+.progress-bar {
+    background-color: var(--progress-bar-active-bg-color); 
+    width: 0;
+    height: var(--progress-bar-height);
+    border-radius: var(--progress-bar-border-radius);
+    text-align: center;
+    color: white;
+    line-height: var(--progress-bar-height);
+    transition: width var(--transition-speed) ease; 
+    font-family: var(--font-family);
+}
+
+.progress-bar.complete {
+    background-color: var(--progress-bar-complete-bg-color); 
+}
+
+button {
+    background-color: var(--button-bg-color);
+    color: white;
+    padding: var(--button-padding);
+    border: none;
+    border-radius: var(--button-border-radius);
+    cursor: pointer;
+    font-size: var(--button-font-size);
+    font-family: var(--font-family);
+}
+
+button:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+button:active {
+    background-color: var(--button-active-bg-color);
+}

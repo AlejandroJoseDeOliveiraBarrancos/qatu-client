@@ -1,0 +1,46 @@
+:root {
+    --black: #050505ff;
+    --rich-black: #011523;
+    --midnight-green: #004150ff;
+    --fern-green: #417e2eff;
+    --gray: #D6D0D0;
+    --white: #e7e7e7;
+
+
+    --default-padding: 16px;
+    --default-margin: 8px;
+
+    --padding-small: 0.5rem;
+    --padding-medium: 1rem;
+    --padding-large: 1.5rem;
+}
+
+body{
+    
+    font-family: Arial, sans-serif;
+
+    background: linear-gradient(120deg, var(--rich-black), var(--black));
+
+    animation: backgroundMove 5s ease infinite; 
+}
+
+/* bg animation */
+@keyframes backgroundMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.form-container-single {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gray);
+    border-radius: 1rem;
+    width: 70%;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    padding-bottom: 0; 
+    box-shadow: 0 0.25rem 0.75rem var(--black);
+}

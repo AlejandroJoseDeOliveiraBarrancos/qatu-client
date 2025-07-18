@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel Example</title>
+    <link rel="stylesheet" href="../Carousel.css">
+</head>
+<body>
+    <div id="carousel-container"></div>
+
+    <script type="module">
+        import { createCarouselView } from '../CarouselView.js';
+        import { createCarouselViewModel } from '../CarouselViewModel.js';
+
+        const items = [
+            { image: 'https://via.placeholder.com/300x200?text=Image+1', title: 'Image 1', description: 'Description for Image 1' },
+            { image: 'https://via.placeholder.com/300x200?text=Image+2', title: 'Image 2', description: 'Description for Image 2' },
+            { image: 'https://via.placeholder.com/300x200?text=Image+3', title: 'Image 3', description: 'Description for Image 3' }
+        ];
+
+        const viewModel = createCarouselViewModel(items);
+        const carouselView = createCarouselView(viewModel);
+
+        document.getElementById('carousel-container').appendChild(carouselView.getElement());
+        carouselView.render();
+    </script>
+</body>
+</html>

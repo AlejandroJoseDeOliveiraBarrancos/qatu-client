@@ -1,0 +1,10 @@
+:root {
+  --row-height-2: 16rem;
+  --row-height-3: auto;
+  --row-height-4: 0.5rem;
+}
+
+.product-home-view-container {
+  display: grid;
+  grid-template-rows: var(--row-height-2) var(--row-height-3) var(--row-height-4);
+}

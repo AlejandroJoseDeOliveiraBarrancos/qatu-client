@@ -1,0 +1,95 @@
+:root {
+    --input-padding: 1rem; 
+    --input-border-radius: 0.5rem; 
+    --button-padding: 1rem;
+    --button-bg-color: #417E2E;
+    --button-hover-bg-color: #315f22;
+    --button-border-radius: 0.5rem;
+    --font-family: 'Roboto', sans-serif;
+    --search-margin: 1rem 0;
+    --results-margin-top: 1rem;
+    --results-font-size: 1rem;
+    --no-results-font-size: 0.875rem;
+    --no-results-color: #cfcfcf;
+    --border-color: #ccc;
+    --dropdown-bg-color: #958383;
+    --dropdown-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+#search {
+    width: 90%; 
+    padding: var(--input-padding);
+    margin-right: 1rem; 
+    border-radius: var(--input-border-radius);
+    border: 1px solid var(--border-color);
+    font-family: var(--font-family);
+}
+
+#search-container {
+    position: relative;
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    width: 100%; 
+    max-width: 800px; 
+    margin: 0 auto; 
+}
+
+#search-button {
+    padding: var(--button-padding);
+    background-color: var(--button-bg-color);
+    color: white;
+    border: none;
+    border-radius: var(--button-border-radius);
+    cursor: pointer;
+    font-family: var(--font-family);
+}
+
+#search-button:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+#search-results {
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 60%; 
+    background-color: var(--dropdown-bg-color);
+    box-shadow: var(--dropdown-shadow); 
+    z-index: 10;
+    font-family: var(--font-family);
+    max-height: 200px;
+    overflow-y: auto; 
+}
+
+#search-results ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#search-results ul li {
+    padding: 0.75rem 1rem;
+    font-size: var(--results-font-size);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#search-results ul li:hover {
+    background-color: #18462c;
+}
+
+#no-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 60%; 
+    font-size: var(--no-results-font-size);
+    color: var(--no-results-color);
+    font-family: var(--font-family);
+    background-color: var(--dropdown-bg-color);
+    padding: 0.75rem 1rem;
+    z-index: 10;
+    box-shadow: var(--dropdown-shadow);
+}

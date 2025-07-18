@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooltip Test</title>
+    <link rel="stylesheet" href="../Tooltip.css">
+</head>
+<body>
+    <h3>Hover over the text to see the tooltip:</h3>
+    <div id="tooltip-container" style="position: relative; display: inline-block; margin: 20px;">
+        Hover me!
+    </div>
+
+    <script type="module">
+        import { createTooltipModel } from '../TooltipModel.js';
+        import { createTooltipViewModel } from '../TooltipViewModel.js';
+
+        const tooltipContainer = document.getElementById('tooltip-container');
+        const tooltipModel = createTooltipModel('This is a tooltip');
+        const tooltipViewModel = createTooltipViewModel(tooltipModel, tooltipContainer);
+
+        tooltipViewModel.initialize();
+    </script>
+</body>
+</html>

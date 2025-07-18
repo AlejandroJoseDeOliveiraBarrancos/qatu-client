@@ -1,0 +1,18 @@
+.tooltip-content {
+    position: absolute;
+    background-color: #666666;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 1000;
+    transition: opacity 0.3s;
+}
+
+.tooltip-content .tooltip-text {
+    white-space: nowrap;
+}
+
+.tooltip-content[style="display: block;"] {
+    opacity: 1;
+}

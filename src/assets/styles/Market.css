@@ -1,0 +1,24 @@
+:root {
+  --column-width: 5em;
+  --row-height-1: 4rem;
+  --row-height-2: 13rem;
+  --row-height-3: auto;
+  --row-height-4: 0.5rem;
+  --row-height-5: 13rem;
+  --panel-padding: 1rem;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: var(--column-width) auto;
+  min-height: 100vh;
+}
+
+.right-content {
+  display: grid;
+  grid-template-rows: var(--row-height-1) var(--row-height-3) var(--row-height-5);
+}
+
+#panel-container {
+  padding: var(--panel-padding) 0;
+}

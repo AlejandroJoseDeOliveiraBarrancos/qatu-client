@@ -1,0 +1,134 @@
+:root {
+    --icon-color: #4b6a57;
+    --icon-size: 30px;
+    --dropdown-bg-color: #004150 !important;
+    --dropdown-text-color: white;
+    --dropdown-padding: 1rem;
+    --dropdown-border-radius: 0.5rem;
+    --font-family: 'Roboto', sans-serif;
+    --menu-item-padding: 0.75rem;
+    --menu-item-font-size: 1rem;
+    --menu-item-hover-bg-color: #346625;
+    --transition-speed: 0.3s;
+}
+
+body {
+    background-color: #011523;
+    font-family: var(--font-family);
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: #D6D0D0;
+}
+
+.icon-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.icon {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.icon svg {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    transition: transform 0.3s ease; 
+}
+
+.icon:hover svg {
+    transform: scale(1.2); 
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: var(--dropdown-bg-color);
+    color: var(--dropdown-text-color);
+    padding: var(--dropdown-padding);
+    border-radius: var(--dropdown-border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    z-index: 10;
+}
+
+.icon-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu p {
+    margin: 0;
+    padding: var(--menu-item-padding);
+    font-size: var(--menu-item-font-size);
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+    border: none;
+}
+
+.dropdown-menu p:hover {
+    background-color: var(--menu-item-hover-bg-color);
+    border-radius: 0.5rem;
+}
+
+.inbox-list, .notifications-list, .favorites-list, .cart-list, .user-list {
+    padding: 0.5rem 0;
+    margin: 0;
+    list-style: none;
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #fff;
+    max-width: 250px;
+    margin: 0 auto;
+}
+
+.list-item:hover {
+    background-color: var(--menu-item-hover-bg-color);
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.list-item-avatar {
+    background-color: #ddd;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    font-weight: bold;
+}
+
+.list-item-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.list-item-title {
+    font-weight: bold;
+}
+
+.list-item-desc {
+    font-size: 0.875rem;
+    color: #ddd;
+}
+
+.list-item input[type="checkbox"] {
+    margin-right: 0.5rem;
+}

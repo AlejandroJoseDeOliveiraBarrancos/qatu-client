@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RadioButton Group Test</title>
+    <link rel="stylesheet" href="../RadioButton.css">
+</head>
+<body>
+    <h3>Select a fruit:</h3>
+    <div id="radio-group-fruits"></div>
+
+    <h3>Select a color:</h3>
+    <div id="radio-group-colors"></div>
+
+    <script type="module">
+        import { createRadioButtonModel, setSelected } from '../RadioButtonModel.js';
+        import { renderRadioButton } from '../RadioButtonView.js';
+
+        function createRadioButtonGroup(container, groupName, options) {
+            let radioButtons = options.map(option => createRadioButtonModel(option, false));
+
+            const handleSelection = (selectedIndex) => {
+                radioButtons = radioButtons.map((button, index) => 
+                    index === selectedIndex ? setSelected(button, true) : setSelected(button, false)
+                );
+                renderGroup();
+            };
+
+            const renderGroup = () => {
+                container.innerHTML = '';
+
+                radioButtons.forEach((button, index) => {
+                    renderRadioButton(container, {
+                        label: button.label,
+                        isSelected: button.isSelected,
+                        name: groupName
+                    }, () => handleSelection(index));
+                });
+            };
+
+            renderGroup();
+        }
+
+        const fruitOptions = ['Apple', 'Banana', 'Orange'];
+        const fruitContainer = document.getElementById('radio-group-fruits');
+        createRadioButtonGroup(fruitContainer, 'fruit-group', fruitOptions);
+
+        const colorOptions = ['Red', 'Blue', 'Green'];
+        const colorContainer = document.getElementById('radio-group-colors');
+        createRadioButtonGroup(colorContainer, 'color-group', colorOptions);
+    </script>
+</body>
+</html>

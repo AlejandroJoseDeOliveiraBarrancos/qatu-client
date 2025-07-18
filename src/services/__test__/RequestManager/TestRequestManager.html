@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request Manager Demo</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .response { margin-top: 20px; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>API Request Manager Demo</h1>
+
+    <section>
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username or Email" />
+        <input type="password" id="password" placeholder="Password" />
+        <button id="loginBtn">Login</button>
+        <button id="googleLoginBtn">Login with Google</button>
+    </section>
+
+    <section>
+        <h2>Validate OTP</h2>
+        <input type="text" id="otp" placeholder="Enter OTP" />
+        <button id="validateOtpBtn">Validate OTP</button>
+    </section>
+
+    <section>
+        <h2>Get All Users</h2>
+        <button id="getAllUsersBtn">Fetch Users</button>
+    </section>
+
+    <section class="response" id="response"></section>
+
+    <script type="module">
+        import { loginWithGoogle as googleLogin } from '../../FirebaseService.js';
+        import { createRequestManager } from '../../Requestmanager.js';
+
+        let authToken = null;
+        const api = createRequestManager({
+            baseUrl: 'http://localhost:5162/api/',
+            authToken
+        });
+
+        document.getElementById('loginBtn').addEventListener('click', login);
+        document.getElementById('googleLoginBtn').addEventListener('click', loginWithGoogle);
+        document.getElementById('validateOtpBtn').addEventListener('click', validateOtp);
+        document.getElementById('getAllUsersBtn').addEventListener('click', getAllUsers);
+
+        async function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await api.post('auth/login', {
+                    body: JSON.stringify({ usernameOrEmail: username, password: password })
+                });
+                
+                authToken = response.accessToken || response.firebaseToken;
+                api.setAuthToken(authToken);
+
+                showResponse('Login successful. Access Token obtained.', response);
+            } catch (error) {
+                showResponse('Login failed.', error);
+            }
+        }
+
+        async function loginWithGoogle() {
+            try {
+                const token = await googleLogin();
+                
+                showResponse('Google login successful. Firebase ID Token obtained.', { token });
+            } catch (error) {
+                showResponse('Google login failed.', error);
+            }
+        }
+
+        async function validateOtp() {
+            const otp = document.getElementById('otp').value;
+
+            try {
+                const response = await api.post('auth/validate-otp', {
+                    body: JSON.stringify({ OTPCode: otp })
+                });
+                
+                showResponse('OTP validated successfully.', response);
+            } catch (error) {
+                showResponse('OTP validation failed.', error);
+            }
+        }
+
+        async function getAllUsers() {
+            try {
+                const response = await api.get('users');
+                showResponse('Fetched users:', response);
+            } catch (error) {
+                showResponse('Fetching users failed.', error);
+            }
+        }
+
+        function showResponse(message, data) {
+            const responseElement = document.getElementById('response');
+            responseElement.innerHTML = `<h3>${message}</h3><pre>${JSON.stringify(data, null, 2)}</pre>`;
+        }
+    </script>
+</body>
+</html>

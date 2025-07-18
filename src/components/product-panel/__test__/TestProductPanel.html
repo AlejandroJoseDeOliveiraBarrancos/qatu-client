@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Product Panel</title>
+    <link rel="stylesheet" href="../ProductPanel.css" />
+    <link rel="stylesheet" href="../../card/CardStyles.css" />
+  </head>
+  <body>
+    <div id="panel-container"></div>
+    <script type="module">
+      import { createPanelModel } from "../ProductPanelModel.js";
+      import { createPanelViewModel } from "../ProductPanelViewModel.js";
+      import { createPanelView } from "../ProductPanelView.js";
+      import { PLACEHOLDER_PP_IMG } from "../constants.js";
+
+      const cardsItems = [
+        {
+          title: "Card 1",
+          description: "Description of card 1",
+          image: PLACEHOLDER_PP_IMG,
+          buttonText: "Click Here",
+          author: "John Doe",
+          date: new Date("2024-10-01"),
+          additionalInfo: "Some extra info",
+          url: "https://example.com/card1",
+        },
+        {
+          title: "Card 2",
+          description: "Description of card 2",
+          image: PLACEHOLDER_PP_IMG,
+          buttonText: "Learn More",
+          author: "Jane Doe",
+          date: new Date("2024-10-15"),
+          additionalInfo: "Additional data",
+          url: "https://example.com/card2",
+        },
+        {
+          title: "Card 3",
+          description: "Description of card 3",
+          image: PLACEHOLDER_PP_IMG,
+          buttonText: "Buy Now",
+          author: "Alice Smith",
+          date: new Date("2024-11-01"),
+          additionalInfo: "Limited offer",
+          url: "https://example.com/card3",
+        },
+        {
+          title: "Card 4",
+          description: "Description of card 4",
+          image: PLACEHOLDER_PP_IMG,
+          buttonText: "Explore",
+          author: "Bob Johnson",
+          date: new Date("2024-12-01"),
+          additionalInfo: "Discover more",
+          url: "https://example.com/card4",
+        },
+        {
+          title: "Card 5",
+          description: "Description of card 5",
+          image: PLACEHOLDER_PP_IMG,
+          buttonText: "Get Started",
+          author: "Charlie Lee",
+          date: new Date("2025-01-01"),
+          additionalInfo: "Free trial available",
+          url: "https://example.com/card5",
+        },
+        {
+          title: "Card 6",
+          description: "Description of card 6",
+          image: PLACEHOLDER_PP_IMG,
+          buttonText: "Sign Up",
+          author: "Diana Green",
+          date: new Date("2025-02-01"),
+          additionalInfo: "Join us today",
+          url: "https://example.com/card6",
+        },
+      ];
+
+      const container = document.getElementById("panel-container");
+      const panelModel = createPanelModel(cardsItems);
+      const panelView = createPanelView(container);
+      const panelViewModel = createPanelViewModel(panelModel, panelView);
+
+      panelViewModel.initializePanel();
+    </script>
+  </body>
+</html>

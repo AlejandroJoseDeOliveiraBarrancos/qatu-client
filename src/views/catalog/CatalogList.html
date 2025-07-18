@@ -1,0 +1,28 @@
+<div class="main-container-clist" id="catalog-view">
+    <section class="top-nav-clist">
+        <button class="back-button">
+            <i class="fa fa-arrow-left"></i> 
+        </button>
+        <h1>Catálogos</h1>
+        <button id="create-catalog-btn" class="create-catalog-btn">+ Crear Catálogo</button>
+    </section>
+    <section class="catalog-list" id="catalog-list"></section>
+</div>
+
+<div id="register-catalog-modal" class="modal">
+    <div class="modal-content">
+        <span id="close-modal" class="close">&times;</span>
+        <h2>Registrar Nuevo Catálogo</h2>
+        <form id="register-catalog-form">
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+                <label for="description">Descripción:</label>
+                <textarea id="description" name="description" required></textarea>
+            </div>
+            <button type="submit" id="register-catalog-btn">Registrar Catálogo</button>
+        </form>
+    </div>
+</div>

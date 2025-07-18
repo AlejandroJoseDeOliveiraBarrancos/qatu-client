@@ -1,0 +1,42 @@
+:root {
+    --listbox-border-color: #ccc;
+    --listbox-border-radius: 5px;
+    --listbox-max-height: 200px;
+    --listbox-item-padding: 10px;
+    --listbox-item-border-color: #ddd;
+    --listbox-hover-bg-color: #f0f0f0;
+    --listbox-selected-bg-color: #73ccc3;
+    --listbox-selected-text-color: white;
+    --selected-items-margin-top: 20px;
+    --selected-items-font-weight: bold;
+}
+
+.listbox {
+    border: 1px solid var(--listbox-border-color);
+    border-radius: var(--listbox-border-radius);
+    display: flex;
+    flex-direction: column;
+    max-height: var(--listbox-max-height);
+    overflow-y: auto;
+}
+
+.listbox-item {
+    padding: var(--listbox-item-padding);
+    border-bottom: 1px solid var(--listbox-item-border-color);
+    cursor: pointer;
+    user-select: none; /* Prevent text selection on click */
+}
+
+.listbox-item:hover {
+    background-color: var(--listbox-hover-bg-color);
+}
+
+.listbox-item.selected {
+    background-color: var(--listbox-selected-bg-color);
+    color: var(--listbox-selected-text-color);
+}
+
+.selected-items {
+    margin-top: var(--selected-items-margin-top);
+    font-weight: var(--selected-items-font-weight);
+}

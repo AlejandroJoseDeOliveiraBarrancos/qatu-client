@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurable Listbox Component</title>
+    <link rel="stylesheet" href="../ListboxStyles.css">
+</head>
+<body>
+    <h1>Configurable Listbox Component Test</h1>
+
+    <!-- Example 1: Country List (Multiple Selection) -->
+    <h2>Country List (Multiple Selection)</h2>
+    <div id="listbox-country" class="listbox" aria-label="Country selection" role="listbox"></div>
+    <div id="selected-country-items" class="selected-items"></div>
+
+    <!-- Example 2: City List (Single Selection) -->
+    <h2>City List (Single Selection)</h2>
+    <div id="listbox-city" class="listbox" aria-label="City selection" role="listbox"></div>
+    <div id="selected-city-items" class="selected-items"></div>
+
+    <script type="module">
+        import { createListboxModel } from '../ListboxModel.js';
+        import { createListboxViewModel } from '../ListboxViewModel.js';
+
+        const initializeListbox = (containerId, selectedContainerId, items, options) => {
+            const container = document.getElementById(containerId);
+            const selectedItemsContainer = document.getElementById(selectedContainerId);
+            const model = createListboxModel(items, options.selectionMode);
+            const viewModel = createListboxViewModel(model, container, selectedItemsContainer, options.selectionMode);
+            viewModel.initialize();
+        };
+
+        // Country List (Multiple Selection)
+        initializeListbox('listbox-country', 'selected-country-items', [
+            { id: '1', label: 'USA' },
+            { id: '2', label: 'Canada' },
+            { id: '3', label: 'Mexico' }
+        ], {
+            selectionMode: 'multiple'
+        });
+
+        // City List (Single Selection)
+        initializeListbox('listbox-city', 'selected-city-items', [
+            { id: '4', label: 'New York' },
+            { id: '5', label: 'Los Angeles' },
+            { id: '6', label: 'Chicago' }
+        ], {
+            selectionMode: 'single'
+        });
+    </script>
+</body>
+</html>

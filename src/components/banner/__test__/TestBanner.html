@@ -1,0 +1,52 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner Test</title>
+    <link rel="stylesheet" href="../Banner.css">
+</head>
+<body>
+    <div id="banner-container"></div>
+
+    <script type="module">
+        import { createBannerModel } from "../BannerModel.js";
+        import { createBannerView } from "../BannerView.js";
+        import { createBannerViewModel } from "../BannerViewModel.js";
+        import { PLACEHOLDER_IMG, PLACEHOLDER_IMG2 } from "../constants.js";
+        
+        const bannerItems = [
+            {
+                title: "Hello User!",
+                subtitle: "What are we doing today?",
+                link: "#",
+                image: PLACEHOLDER_IMG,
+            },
+            {
+                title: "Special Offer",
+                subtitle: "Check out our deals!",
+                link: "https://example.com/deals",
+                image: PLACEHOLDER_IMG2,
+            },
+            {
+                title: "New Collection",
+                subtitle: "Explore the latest trends",
+                link: "https://example.com/new",
+                image: PLACEHOLDER_IMG,
+            },
+            {
+                title: "Exclusive Discount",
+                subtitle: "Save up to 50% on selected items",
+                link: "https://example.com/discount",
+                image: PLACEHOLDER_IMG2,
+            }
+        ];
+
+        const container = document.getElementById("banner-container");
+        const bannerModel = createBannerModel(bannerItems);
+        const bannerView = createBannerView(container);
+        const bannerViewModel = createBannerViewModel(bannerModel, bannerView);
+
+        bannerViewModel.initializeBanner();
+    </script>
+</body>
+</html>

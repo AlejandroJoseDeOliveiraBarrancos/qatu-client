@@ -1,0 +1,122 @@
+image: node:latest
+
+services:
+  - name: docker:23.0.3
+    alias: docker
+
+stages:
+  - install
+  - build
+  - transpile
+  - test
+  - static_code_scan
+  - quality_gate
+
+cache:
+  paths:
+    - node_modules/
+
+variables:
+  npm_config_cache: "$CI_PROJECT_DIR/.npm"
+  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
+  API_BASE_URL: "$API_BASE_URL"
+  FIREBASE_API_KEY: "$FIREBASE_API_KEY"
+  FIREBASE_AUTH_DOMAIN: "$FIREBASE_AUTH_DOMAIN"
+  FIREBASE_PROJECT_ID: "$FIREBASE_PROJECT_ID"
+  FIREBASE_STORAGE_BUCKET: "$FIREBASE_STORAGE_BUCKET"
+  FIREBASE_MESSAGING_SENDER_ID: "$FIREBASE_MESSAGING_SENDER_ID"
+  FIREBASE_APP_ID: "$FIREBASE_APP_ID"
+  SONAR_HOST_URL: "$SONAR_HOST_URL"  
+  IMAGE_NAME: "$CI_REGISTRY_IMAGE/frontend"
+  IMAGE_TAG: "$CI_COMMIT_REF_SLUG"
+  SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"
+  GIT_DEPTH: "0"
+
+install:
+  stage: install
+  script:
+    - npm cache clean --force
+    - npm install
+  artifacts:
+    name: "artifacts"
+    untracked: true
+    expire_in: 60 mins
+    paths:
+      - .npm/
+      - node_modules/
+
+build:
+  stage: build
+  script:
+    - echo "Building code..."
+    - npm run build
+  artifacts:
+    paths:
+      - build 
+    expire_in: 60 min
+  dependencies:
+    - install
+
+transpile:
+  stage: transpile
+  script:
+    - echo "Transpiling code..."
+    - npm ci
+    - npm install --save-dev webpack webpack-cli
+    - npm run build
+  artifacts:
+    paths:
+      - dist/ 
+    expire_in: 1 week
+
+unit_tests:
+  stage: test
+  script:
+    - echo "Running unit tests with coverage..."
+    - npm ci
+    - npm run test:coverage
+  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+  artifacts:
+    paths:
+      - coverage/
+    expire_in: 1 week
+  dependencies:
+    - install
+
+# SonarQube Stages with specific image
+
+static_analysis:
+  stage: static_code_scan
+  image: sonarsource/sonar-scanner-cli:11.1
+  script:
+  - >
+    sonar-scanner -Dsonar.projectKey=$SONAR_PROJECT_KEY_FE 
+      -Dsonar.sources=./src 
+      -Dsonar.host.url=$SONAR_HOST_URL 
+      -Dsonar.token=$SONAR_TOKEN 
+      -X
+  allow_failure: true
+
+sonarqube-check:
+  stage: quality_gate
+  image: sonarsource/sonar-scanner-cli:11.1
+  script:
+    - sonar-scanner -Dsonar.host.url="${SONAR_HOST_URL}"
+  allow_failure: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_COMMIT_BRANCH == 'main'
+
+sonarqube-vulnerability-report:
+  stage: quality_gate
+  image: sonarsource/sonar-scanner-cli:11.1
+  script:
+    - 'curl -u "${SONAR_TOKEN}:" "${SONAR_HOST_URL}/api/issues/gitlab_sast_export?projectKey=qatu-client&branch=${CI_COMMIT_BRANCH}&pullRequest=${CI_MERGE_REQUEST_IID}" -o gl-sast-sonar-report.json'
+  allow_failure: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_COMMIT_BRANCH == 'main'
+  artifacts:
+    expire_in: 1 day
+    reports:
+      sast: gl-sast-sonar-report.json

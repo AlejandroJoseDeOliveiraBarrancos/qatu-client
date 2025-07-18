@@ -1,0 +1,85 @@
+.user-management-container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #ffffff; 
+}
+
+.add-user-button {
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: #417e2eff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-user-button:hover {
+    background-color: #FFB300;
+}
+
+.filter-input {
+    margin: 10px 0;
+    padding: 8px;
+    width: 50%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.user-table th, .user-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    transition: color 0.3s ease;
+}
+
+.user-table th {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.user-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.user-table tr:hover td {
+    color: #333; 
+}
+
+.user-table .action-buttons button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.user-table .btn-edit {
+    background-color: #417e2eff;
+    color: white;
+}
+
+.user-table .btn-delete {
+    background-color: #F44336;
+    color: white;
+}
+
+.user-table .btn-edit:hover {
+    background-color: #FFB300;
+}
+
+.user-table .btn-delete:hover {
+    background-color: #FFB300;
+}
+

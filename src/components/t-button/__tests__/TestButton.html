@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Button Component</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div id="button-container"></div>
+
+    <script type="module">
+        import { createButtonModel } from '../ButtonModel.js';
+        import { createButtonViewModel } from '../ButtonViewModel.js';
+
+        const link = 'Click Me';
+        const buttonContainer = document.getElementById('button-container');
+        
+        const buttonModel = createButtonModel(link);
+        
+        const buttonViewModel = createButtonViewModel(buttonModel, buttonContainer);
+        buttonViewModel.render();
+        buttonViewModel.bindEvents();
+    </script>
+</body>
+</html>

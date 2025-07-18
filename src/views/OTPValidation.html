@@ -1,0 +1,20 @@
+<div class="otp-container">
+    <div class="info-container">
+        <h1>Verify OTP code</h1>
+        <p>Didn't get the code?</p>
+        <p><a href="#/resend_otp">Resend code</a></p>
+
+        <div class="form-container-single otp-form">
+            <form id="otp-form">
+                <label for="otpInput">OTP code</label>
+                <input type="text" id="otpInput" placeholder="Enter OTP code" maxlength="6" required>
+
+                <div class="button-container">
+                    <button type="submit">send</button>
+                </div>
+            </form>
+
+            <div id="error-message" class="error-message"></div>
+        </div>
+    </div>
+</div>
